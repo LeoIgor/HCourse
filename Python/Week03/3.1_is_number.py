@@ -10,12 +10,15 @@
 
 """
 
-# Является ли x беззнаковым float?
-# Вынес в отдельную функцию для избежания дублирования кода
+DEC_SEPARATOR = '.' # Десятичный разделитель
 
+"""
+Является ли x беззнаковым float?
+Вынес в отдельную функцию для избежания дублирования кода
+"""
 def is_unsigned_float(x):
-    if len(x.split(".")) == 2:
-        a,b = x.split(".")
+    if len(x.split(DEC_SEPARATOR)) == 2:
+        a,b = x.split(DEC_SEPARATOR)
         if a.isdigit() and b.isdigit(): return True
     
     return False
