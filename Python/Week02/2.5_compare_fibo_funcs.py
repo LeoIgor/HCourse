@@ -12,6 +12,8 @@ def my_fibo(n):
     num2 = 1
     
     counter = 1
+
+    if n == 0: return 0
     
     while(counter != n):
         num1, num2 = num2, num1 + num2
