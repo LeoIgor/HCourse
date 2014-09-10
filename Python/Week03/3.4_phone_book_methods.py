@@ -33,15 +33,32 @@ def read_phone_book_to_sorted_tuples_list():
 	for line in open(FILE_NAME):
 		phone_book.append(tuple(line.rstrip().split(":")))
 		
-	phone_book.sort()
+	return phone_book.sort()
 	
-	return phone_book
-	
-def get_name(phone):
+def get_name_from_dict(phone):
 	phone_book = read_phone_book_to_dict()
 	
 	return phone_book.get(str(phone), "Not found")
+	
+def get_name_from_tuples_list(phone):
+	phone_book = read_phone_book_to_tuples_list()
+	
+	phone = str(phone)
+	
+	for item in phone_book:
+		if phone in item:
+			return item[1]
+			
+	return "Not found"
 
+"""
+> придумайте эффективный метод поиска
+Нагуглил бинарный поиск, его и попытаюсь реализовать (думаю, на данном этапе 
+ничего сложнее и не требуется).
+"""	
+def get_name_from_sorted_tuples_list(phone):
+	pass
+	
 
 if __name__ == "__main__":
-	print(get_name(5004360))
+	get_name_from_sorted_tuples_list(phone)	
