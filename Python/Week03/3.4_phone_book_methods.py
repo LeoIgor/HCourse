@@ -1,23 +1,17 @@
 # -*- coding: utf-8 -*-
 
-"""
-Задание 3.4. Прочитайте вашу телефонную книгу из файла:
-
-Для упорядоченного списка придумайте эффективный метод 
-поиска. Сравните скорость поиска в трёх случаях 
-(придумайте сами методику, по которой можно сравнить скорость).
-"""
+from bisect import bisect_left
 
 FILE_NAME = "PhoneBook.txt"
 
 def read_phone_book_to_dict():
-	phone_book = {}
-	
-	for line in open(FILE_NAME):
-		phone, name = line.rstrip().split(":")
-		phone_book[phone] = name
-		
-	return phone_book
+    phone_book = {}
+
+    for line in open(FILE_NAME):
+        phone, name = line.rstrip().split(":")
+        phone_book[phone] = name
+
+    return phone_book
 		
 def read_phone_book_to_tuples_list():
 	phone_book = []
@@ -28,12 +22,14 @@ def read_phone_book_to_tuples_list():
 	return phone_book
 		
 def read_phone_book_to_sorted_tuples_list():
-	phone_book = []
+    phone_book = []
 	
-	for line in open(FILE_NAME):
-		phone_book.append(tuple(line.rstrip().split(":")))
-		
-	return phone_book.sort()
+    for line in open(FILE_NAME):
+        phone_book.append(tuple(line.rstrip().split(":")))
+
+    phone_book.sort()	
+    
+    return phone_book
 	
 def get_name_from_dict(phone):
 	phone_book = read_phone_book_to_dict()
@@ -51,14 +47,17 @@ def get_name_from_tuples_list(phone):
 			
 	return "Not found"
 
-"""
-> придумайте эффективный метод поиска
-Нагуглил бинарный поиск, его и попытаюсь реализовать (думаю, на данном этапе 
-ничего сложнее и не требуется).
-"""	
 def get_name_from_sorted_tuples_list(phone):
-	pass
-	
-
+    phone_book = read_phone_book_to_sorted_tuples_list()
+    phone = str(phone)
+    
+    index = bisect_left([i[0] for i in phone_book], phone)
+    
+    if phone_book[index][0] == phone:
+        return phone_book[index][1]
+    else:
+        return "Not found"
+    
+    
 if __name__ == "__main__":
-	get_name_from_sorted_tuples_list(phone)	
+	print(get_name_from_sorted_tuples_list(1010313))
