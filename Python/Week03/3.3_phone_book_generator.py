@@ -11,14 +11,15 @@ MAX_PHONE_NUM = 9999999     # максимально возможный номе
 
 FILE_NAME = "PhoneBook.txt" # имя выходного файла
 
-"""Return random name"""
+
 def get_random_name():
+"""Return random name"""
     name = "".join([random.choice(string.ascii_lowercase) for i in range(random.randint(MIN_NAME_LEN, MAX_NAME_LEN))])
     name = name[0].upper() + name[1:]
     return name
 
-"""Return random phone number"""
 def get_random_number():
+"""Return random phone number"""
     return str(random.randint(MIN_PHONE_NUM, MAX_PHONE_NUM))
     
 def generate_phone_book(items_count):

@@ -59,7 +59,8 @@ def get_name_from_sorted_tuples_list(phone):
     else:
         return "Not found"
         
-        
+
+def func_testing(func_name):
 """
 >Сравните скорость поиска в трёх случаях (придумайте сами методику, 
 по которой можно сравнить скорость).
@@ -72,7 +73,6 @@ def get_name_from_sorted_tuples_list(phone):
 Бенчмарк заведомо несколько некорректный т.к. в функции бинарного поиска
 каждую итерацию выполняется сортировка списка.
 """
-def func_testing(func_name):
     
     test_data = {5000000 : "Поиск заведомо отсутствующего значения",
                  4580468 : "Поиск значения в начале списка",
@@ -122,6 +122,6 @@ get_name_from_sorted_tuples_list:
 """
 
 if __name__ == "__main__":
-    func_testing(get_name_from_dict)
     func_testing(get_name_from_tuples_list)
     func_testing(get_name_from_sorted_tuples_list)
+    func_testing(get_name_from_dict)
